@@ -61,7 +61,7 @@ class BookController extends Controller
 
         $book = Book::find($id);
         return inertia('Book/Show',[
-            'book' =>  $book
+            'book' => new BookResource($book)
         ]);
     }
 

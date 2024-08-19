@@ -27,7 +27,6 @@ const Show = ({ auth, book }) => {
                     <div className="overflow-hidden bg-white shadow-lg dark:bg-gray-800 sm:rounded-lg">
                         <div className="p-6 text-gray-900 dark:text-gray-100">
 
-
                             <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
                                 Author: {book.author}
                             </h3>
@@ -36,7 +35,7 @@ const Show = ({ auth, book }) => {
                             </p>
 
                             <img
-                                src={book.cover_photo_url}
+                                src={`http://127.0.0.1:8000${book.cover_photo_url}`}
                                 alt={`${book.title} cover`}
                                 className="w-48 h-auto mx-auto mb-6 rounded shadow-lg"
                               />
