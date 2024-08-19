@@ -13,11 +13,12 @@ class BooksTableSeeder extends Seeder
      */
     public function run(): void
     {
-         DB::table('books')->insert([
+        DB::table('books')->insert([
             [
                 'title' => 'أولاد حارتنا',
                 'author' => 'نجيب محفوظ',
                 'description' => 'رواية أدبية تعتبر من أبرز أعمال نجيب محفوظ تتناول صراع الخير والشر في المجتمع.',
+                'cover_photo_url' => 'https://cdn-icons-png.flaticon.com/512/29/29302.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -25,6 +26,7 @@ class BooksTableSeeder extends Seeder
                 'title' => 'الأسود يليق بك',
                 'author' => 'أحلام مستغانمي',
                 'description' => 'رواية رومانسية تتحدث عن الحب والكرامة من تأليف الكاتبة الجزائرية أحلام مستغانمي.',
+                'cover_photo_url' => 'https://cdn-icons-png.flaticon.com/512/29/29302.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -32,6 +34,7 @@ class BooksTableSeeder extends Seeder
                 'title' => 'في قلبي أنثى عبرية',
                 'author' => 'خولة حمدي',
                 'description' => 'رواية اجتماعية تسرد قصة حب مليئة بالمعاناة والألم بين شخصين من ثقافات مختلفة.',
+                'cover_photo_url' => 'https://cdn-icons-png.flaticon.com/512/29/29302.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -39,6 +42,7 @@ class BooksTableSeeder extends Seeder
                 'title' => 'عائد إلى حيفا',
                 'author' => 'غسان كنفاني',
                 'description' => 'رواية قصيرة تتناول مسألة العودة الفلسطينية والهوية من خلال قصة إنسانية مؤثرة.',
+                'cover_photo_url' => 'https://cdn-icons-png.flaticon.com/512/29/29302.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -46,6 +50,7 @@ class BooksTableSeeder extends Seeder
                 'title' => 'رأيت رام الله',
                 'author' => 'مريد البرغوثي',
                 'description' => 'سيرة ذاتية تتحدث عن العودة إلى الوطن بعد سنوات من المنفى، بأسلوب أدبي شاعري.',
+                'cover_photo_url' => 'https://cdn-icons-png.flaticon.com/512/29/29302.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

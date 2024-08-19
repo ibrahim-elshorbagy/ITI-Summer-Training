@@ -3,15 +3,9 @@ import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { MdDashboard, MdChevronLeft, MdChevronRight } from "react-icons/md";
 import {
     FaChartBar,
-    FaCog,
-    FaBell,
-    FaThLarge,
-    FaShoppingCart,
-    FaRocket,
-    FaInfoCircle,
-    FaUser,
 } from "react-icons/fa";
 import SideNavLink from "@/Components/SideNavLink";
+import { MdOutlineLibraryBooks } from "react-icons/md";
 
 import { Link } from "@inertiajs/react";
 
@@ -26,6 +20,12 @@ const MySidebar = ({ user }) => {
                     text: "dashboard",
                     href: "dashboard",
                     icon: <MdDashboard />,
+                    roles: ["admin"],
+                },
+                {
+                    text: "Books",
+                    href: "book.index",
+                    icon: <MdOutlineLibraryBooks />,
                     roles: ["admin"],
                 },
             ],
@@ -90,7 +90,7 @@ const MySidebar = ({ user }) => {
                             key={index}
                             icon={section.icon}
                             label={section.title}
-                            className="py-2 my-2 text-gray-800 dark:text-white dark:hover:text-white hover:text-black"
+                            className="py-2 my-2 text-gray-800  dark:text-white dark:hover:text-white hover:text-black"
                         >
                             {section.links.map((link, idx) => (
                                 <MenuItem
@@ -102,10 +102,11 @@ const MySidebar = ({ user }) => {
                                         href={route(link.href)}
                                         active={route().current(link.href)}
                                     >
-                                        {link.text}
+                                        <span className="cursor-pointer">{link.text}</span>
                                     </SideNavLink>
                                 </MenuItem>
                             ))}
+
                         </SubMenu>
                     ))}
                 </Menu>
@@ -114,7 +115,6 @@ const MySidebar = ({ user }) => {
                 </div>
                 <Link href={route("profile.edit")}>
                     <div className="flex items-center pt-2 pl-6 overflow-hidden ">
-                        {/* justify-center */}
                         <div
                             className={`flex items-center ${
                                 collapsed ? "" : "gap-3"

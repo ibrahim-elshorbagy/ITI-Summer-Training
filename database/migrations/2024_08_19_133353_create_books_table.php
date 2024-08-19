@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('author');
             $table->string('description');
+            $table->string('cover_photo_url', 2048)->nullable();
             $table->timestamps();
         });
     }
