@@ -26,11 +26,11 @@ const MySidebar = ({ user }) => {
                     text: "dashboard",
                     href: "dashboard",
                     icon: <MdDashboard />,
-                    roles: ["teacher"],
+                    roles: ["admin"],
                 },
             ],
             icon: <MdDashboard />,
-            roles: ["teacher"],
+            roles: ["admin"],
         },
     ];
 

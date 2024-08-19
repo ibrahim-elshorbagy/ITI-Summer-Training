@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call(RolesAndPermissionsSeeder::class);
+        $this->call(BooksTableSeeder::class);
 
         //admin
         $user = User::factory()->create([
@@ -26,7 +27,7 @@ class DatabaseSeeder extends Seeder
             'password' =>Hash::make('a'),
             'profile_photo_url'=>'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
         ]);
-        $user->assignRole('teacher');
+        $user->assignRole('admin');
 
         $user = User::factory()->create([
             'name' => 'Ahmed Student',
