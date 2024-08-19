@@ -30,6 +30,8 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $roles = [
             'admin' => Permission::all(),
+            'teacher' => Permission::all(),
+            'student' => [],
 
         ];
 

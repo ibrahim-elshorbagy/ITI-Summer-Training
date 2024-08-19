@@ -24,8 +24,17 @@ class DatabaseSeeder extends Seeder
             'name' => 'ibrahim elshorbagy',
             'email' => 'a@a.a',
             'password' =>Hash::make('a'),
+            'profile_photo_url'=>'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
         ]);
-        $user->assignRole('admin');
+        $user->assignRole('teacher');
+
+        $user = User::factory()->create([
+            'name' => 'Ahmed Student',
+            'email' => 's@s.s',
+            'password' =>Hash::make('s'),
+            'profile_photo_url'=>'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
+        ]);
+        $user->assignRole('student');
 
 
 

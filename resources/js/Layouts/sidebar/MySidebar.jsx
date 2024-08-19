@@ -20,80 +20,17 @@ const MySidebar = ({ user }) => {
 
     const sections = [
         {
-            title: "Admin Dashboard",
+            title: "Dashboard",
             links: [
                 {
                     text: "dashboard",
                     href: "dashboard",
                     icon: <MdDashboard />,
-                    roles: ["admin"],
-                },
-                {
-                    text: "All Users",
-                    href: "/",
-                    icon: <FaUser />,
-                    roles: ["admin"],
+                    roles: ["teacher"],
                 },
             ],
             icon: <MdDashboard />,
-            roles: ["admin"],
-        },
-        {
-            title: "E-Commerce",
-            links: [
-                {
-                    text: "Sales",
-                    href: "/",
-                    icon: <FaShoppingCart />,
-                    roles: ["admin", "user"],
-                },
-                {
-                    text: "Product List",
-                    href: "/",
-                    icon: <FaThLarge />,
-                    roles: ["admin", "user"],
-                },
-            ],
-            icon: <FaShoppingCart />,
-            roles: ["admin", "user"],
-        },
-        {
-            title: "Marketing",
-            links: [
-                {
-                    text: "Campaigns",
-                    href: "/",
-                    icon: <FaRocket />,
-                    roles: ["admin", "user"],
-                },
-                {
-                    text: "Analytics",
-                    href: "/",
-                    icon: <FaChartBar />,
-                    roles: ["admin", "user"],
-                },
-            ],
-            icon: <FaRocket />,
-            roles: ["admin", "user"],
-        },
-        {
-            title: "Support",
-            links: [
-                {
-                    text: "FAQ",
-                    href: "/",
-                    icon: <FaInfoCircle />,
-                    roles: ["admin", "user"],
-                },
-                {
-                    text: "Contact Us",
-                    href: "/",
-                    icon: <FaBell />,
-                    roles: ["admin", "user"],
-                },
-            ],
-            icon: <FaInfoCircle />,
-            roles: ["admin", "user"],
+            roles: ["teacher"],
         },
     ];
 
