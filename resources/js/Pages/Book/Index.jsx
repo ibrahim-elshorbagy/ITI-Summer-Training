@@ -10,6 +10,14 @@ export default function Index({ auth, books, success }) {
         router.delete(route("book.destroy", book.id));
     };
 
+        const borrow = (book) => {
+        // if (!window.confirm("Are you sure you want to delete the book?")) {
+        //     return;
+        // }
+
+        // router.delete(route("book.destroy", book.id));
+    };
+
     // Function to format the date
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -66,26 +74,45 @@ export default function Index({ auth, books, success }) {
                                                 <td className="px-3 py-2">{book.author}</td>
                                                 <td className="px-3 py-2">{book.description}</td>
                                                 <td className="px-3 py-2">{formatDate(book.updated_at)}</td>
-                                                <td className="px-3 py-2">
-                                                     <Link
-                                                        href={route("book.show", book.id)}
-                                                        className="mx-1 font-medium text-emerald-600 hover:underline"
-                                                    >
-                                                        Show
-                                                    </Link>
-                                                    <Link
-                                                        href={route("book.edit", book.id)}
-                                                        className="mx-1 font-medium text-blue-600 hover:underline"
-                                                    >
-                                                        Edit
-                                                    </Link>
-                                                    <button
-                                                        onClick={() => deleteBook(book)}
-                                                        className="mx-1 font-medium text-red-600 hover:underline"
-                                                    >
-                                                        Delete
-                                                    </button>
-                                                </td>
+
+                                                {auth.user.roles == 'admin' && (
+                                                    <td className="px-3 py-2">
+                                                        <Link
+                                                            href={route("book.show", book.id)}
+                                                            className="mx-1 font-medium text-emerald-600 hover:underline"
+                                                        >
+                                                            Show
+                                                        </Link>
+                                                        <Link
+                                                            href={route("book.edit", book.id)}
+                                                            className="mx-1 font-medium text-blue-600 hover:underline"
+                                                        >
+                                                            Edit
+                                                        </Link>
+                                                        <button
+                                                            onClick={() => deleteBook(book)}
+                                                            className="mx-1 font-medium text-red-600 hover:underline"
+                                                        >
+                                                            Delete
+                                                        </button>
+                                                    </td>
+                                                )}
+                                                {auth.user.roles == 'student' && (
+                                                    <td className="px-3 py-2">
+                                                        <Link
+                                                            href={route("books.show", book.id)}
+                                                            className="mx-1 font-medium text-emerald-600 hover:underline"
+                                                        >
+                                                            Show
+                                                        </Link>
+                                                        <button
+                                                            onClick={() => borrow(book)}
+                                                            className="mx-1 font-medium text-blue-600 hover:underline"
+                                                        >
+                                                            borrow
+                                                        </button>
+                                                    </td>
+                                                )}
                                             </tr>
                                         ))}
                                     </tbody>

@@ -34,6 +34,7 @@ Route::get('/dashboard', function () {
 // Admin routes
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::resource('/book', BookController::class);
 
 });
 
@@ -48,9 +49,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('/profile/photo', [ProfileController::class, 'updateProfileImage'])->name('profile.update-photo');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/books', [BookController::class,'index'])->name('books.index');
+    Route::get('/books/{book}', [BookController::class,'show'])->name('books.show');
 
-    // Route::get('/books',[BookController::class, 'index'])->name('book.index');
-    Route::resource('/book', BookController::class);
 });
 
 require __DIR__.'/auth.php';

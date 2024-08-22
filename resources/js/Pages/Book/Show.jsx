@@ -35,7 +35,7 @@ const Show = ({ auth, book }) => {
                             </p>
 
                             <img
-                                src={`http://127.0.0.1:8000${book.cover_photo_url}`}
+                                src={book.cover_photo_url.startsWith('http') ? book.cover_photo_url : `http://127.0.0.1:8000${book.cover_photo_url}`}
                                 alt={`${book.title} cover`}
                                 className="w-48 h-auto mx-auto mb-6 rounded shadow-lg"
                               />

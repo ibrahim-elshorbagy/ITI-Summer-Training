@@ -28,9 +28,15 @@ const MySidebar = ({ user }) => {
                     icon: <MdOutlineLibraryBooks />,
                     roles: ["admin"],
                 },
+                 {
+                    text: "Books",
+                    href: "books.index",
+                    icon: <MdOutlineLibraryBooks />,
+                    roles: ["student"],
+                },
             ],
             icon: <MdDashboard />,
-            roles: ["admin"],
+            roles: ["admin", "student"],
         },
     ];
 
@@ -90,7 +96,7 @@ const MySidebar = ({ user }) => {
                             key={index}
                             icon={section.icon}
                             label={section.title}
-                            className="py-2 my-2 text-gray-800  dark:text-white dark:hover:text-white hover:text-black"
+                            className="py-2 my-2 text-gray-800 dark:text-white dark:hover:text-white hover:text-black"
                         >
                             {section.links.map((link, idx) => (
                                 <MenuItem
