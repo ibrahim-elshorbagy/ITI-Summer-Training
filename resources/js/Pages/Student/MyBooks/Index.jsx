@@ -66,7 +66,7 @@ export default function Index({ auth, borrowedBooks, returnedBooks, success, dan
                                                 <td className="px-3 py-2">{formatDateTime(borrow.borrowed_at)}</td>
                                                 <td className="px-3 py-2">
                                                     <Link
-                                                        href={route("books.show", borrow.book.id)}
+                                                        href={route("book.show", borrow.book.id)}
                                                         className="mx-1 font-medium text-emerald-600 hover:underline"
                                                     >
                                                         Show
@@ -98,7 +98,6 @@ export default function Index({ auth, borrowedBooks, returnedBooks, success, dan
                                             <th className="px-3 py-3 text-left">Title</th>
                                             <th className="px-3 py-3 text-left">Author</th>
                                             <th className="px-3 py-3 text-left">Returned At</th>
-                                            <th className="px-3 py-3 text-left">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>

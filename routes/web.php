@@ -34,7 +34,9 @@ Route::get('/dashboard', [AdminController::class, 'switch'])
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::resource('/book', BookController::class);                                                     //CRUD opertions
+    Route::resource('/book', BookController::class)->except(['index','show']);                                                     //CRUD opertions
+    Route::get('/borrowed-books', [BookController::class, 'borrowedBooks'])->name('books.borrowed');
+    Route::get('/available-books', [BookController::class, 'availableBooks'])->name('books.available');
 
 });
 
@@ -69,8 +71,9 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/books', [BookController::class,'index'])->name('books.index');
-    Route::get('/books/{book}', [BookController::class,'show'])->name('books.show');
+    Route::get('/books', [BookController::class,'availableBooks'])->name('books.index');
+    Route::get('/books/{book}', [BookController::class,'show'])->name('book.show');
+
 
 });
 

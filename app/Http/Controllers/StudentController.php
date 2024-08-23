@@ -54,6 +54,8 @@ class StudentController extends Controller
             'status' => 'borrowed',
         ]);
 
+        Book::where('id', $id)->update(['status' => 'borrowed']);
+
         return to_route('books.index')
                 ->with('success',"the book has been borrowed");
 
@@ -110,6 +112,8 @@ class StudentController extends Controller
             'returned_at' => now(),
             'status' => 'returned',
         ]);
+
+        Book::where('id', $id)->update(['status' => 'available']);
 
         return to_route('student.MyBooks')
                 ->with('success', "The book has been successfully returned.");

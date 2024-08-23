@@ -10,15 +10,26 @@ use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
-    public function index()
+    public function availableBooks()
     {
-        $books = Book::all();
+        $books = Book::where('status', 'available')->get();
 
-        return inertia('Book/Index',[
-            'books' =>  $books,
-            'success'=>session('success'),
-            'danger'=>session('danger')
+        return inertia('Book/AvailableBooks', [
+            'books' => $books,
+            'success' => session('success'),
+            'danger' => session('danger')
+        ]);
+    }
 
+
+    public function borrowedBooks()
+    {
+        $books = Book::where('status', 'borrowed')->get();
+
+        return inertia('Book/BorrowedBooks', [
+            'books' => $books,
+            'success' => session('success'),
+            'danger' => session('danger')
         ]);
     }
 

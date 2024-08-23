@@ -23,11 +23,18 @@ const MySidebar = ({ user }) => {
                     roles: ["admin"],
                 },
                 {
-                    text: "Books",
-                    href: "book.index",
+                    text: "available Books",
+                    href: "books.available",
                     icon: <MdOutlineLibraryBooks />,
                     roles: ["admin"],
                 },
+                {
+                    text: "borrowed books",
+                    href: "books.borrowed",
+                    icon: <MdOutlineLibraryBooks />,
+                    roles: ["admin"],
+                },
+
             ],
             icon: <MdDashboard />,
             roles: ["admin"],
@@ -89,7 +96,7 @@ const MySidebar = ({ user }) => {
                         }`}
                     >
                         <FaChartBar className="text-3xl text-blue-500" />
-                        <span>DashMaster</span>
+                        <span>LibraryMaster</span>
                     </h1>
                     <button
                         onClick={() => setCollapsed(!collapsed)}
