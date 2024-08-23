@@ -3,9 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
+
+
+    public function switch()
+    {
+        $user = Auth::user();
+
+        if ($user->hasRole('admin')) {
+            return Redirect::route('admin.dashboard');
+        }
+
+        if ($user->hasRole('student')) {
+            return Redirect::route('student.dashboard');
+        }
+
+        return abort(403, 'Unauthorized');
+    }
+
 
     public function dashboard(){
         return inertia('Admin/Dashboard');

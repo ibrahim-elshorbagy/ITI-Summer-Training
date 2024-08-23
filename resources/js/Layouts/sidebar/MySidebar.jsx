@@ -18,9 +18,15 @@ const MySidebar = ({ user }) => {
             links: [
                 {
                     text: "dashboard",
-                    href: "dashboard",
+                    href: "admin.dashboard",
                     icon: <MdDashboard />,
                     roles: ["admin"],
+                },
+                 {
+                    text: "dashboard",
+                    href: "student.dashboard",
+                    icon: <MdDashboard />,
+                    roles: ["student"],
                 },
                 {
                     text: "Books",
@@ -99,18 +105,20 @@ const MySidebar = ({ user }) => {
                             className="py-2 my-2 text-gray-800 dark:text-white dark:hover:text-white hover:text-black"
                         >
                             {section.links.map((link, idx) => (
+                                <SideNavLink
+                                        href={route(link.href)}
+                                        active={route().current(link.href)}
+                                    >
                                 <MenuItem
                                     key={idx}
                                     icon={link.icon}
                                     className="py-2 my-1 text-gray-600 dark:text-gray-400 dark:hover:text-white hover:text-black"
                                 >
-                                    <SideNavLink
-                                        href={route(link.href)}
-                                        active={route().current(link.href)}
-                                    >
+
                                         <span className="cursor-pointer">{link.text}</span>
-                                    </SideNavLink>
                                 </MenuItem>
+                            </SideNavLink>
+
                             ))}
 
                         </SubMenu>
