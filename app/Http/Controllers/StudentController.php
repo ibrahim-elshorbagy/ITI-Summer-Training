@@ -63,11 +63,20 @@ class StudentController extends Controller
     {
 
         $user = Auth::user();
-        $booksId = Borrowing::where('user_id', $user->id)->where('status', 'borrowed')->pluck('book_id');
+            $borrowedBooks = Borrowing::where('user_id', $user->id)
+                ->where('status', 'borrowed')
+                ->with('book')
+                ->get();
 
-        $books = Book::whereIn('id', $booksId)->get();
+            // Get returned books (status: returned)
+            $returnedBooks = Borrowing::where('user_id', $user->id)
+                ->where('status', 'returned')
+                ->with('book')
+                ->get();
+
         return inertia('Student/MyBooks/Index', [
-            'books' => $books,
+            'borrowedBooks' => $borrowedBooks,
+            'returnedBooks' => $returnedBooks,
             'success'=>session('success'),
             'danger'=>session('danger')
         ]);
