@@ -22,6 +22,19 @@ const MySidebar = ({ user }) => {
                     icon: <MdDashboard />,
                     roles: ["admin"],
                 },
+                {
+                    text: "Books",
+                    href: "book.index",
+                    icon: <MdOutlineLibraryBooks />,
+                    roles: ["admin"],
+                },
+            ],
+            icon: <MdDashboard />,
+            roles: ["admin"],
+        },
+                {
+            title: "Dashboard",
+            links: [
                  {
                     text: "dashboard",
                     href: "student.dashboard",
@@ -30,13 +43,13 @@ const MySidebar = ({ user }) => {
                 },
                 {
                     text: "Books",
-                    href: "book.index",
-                    icon: <MdOutlineLibraryBooks />,
-                    roles: ["admin"],
-                },
-                 {
-                    text: "Books",
                     href: "books.index",
+                    icon: <MdOutlineLibraryBooks />,
+                    roles: ["student"],
+                },
+                  {
+                    text: "My Books",
+                    href: "student.MyBooks",
                     icon: <MdOutlineLibraryBooks />,
                     roles: ["student"],
                 },

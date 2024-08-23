@@ -45,6 +45,9 @@ Route::middleware(['auth', 'role:student'])->group(function () {
 
     Route::get('student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
 
+    Route::post('student/borrow/{id}', [StudentController::class, 'borrow'])->name('book.borrow');
+    Route::post('student/return/{id}', [StudentController::class, 'return'])->name('book.return');
+    Route::get('student/MyBooks', [StudentController::class, 'MyBooks'])->name('student.MyBooks');
 });
 
 //-------------------------------------------------------------------------------------------

@@ -16,7 +16,8 @@ class BookController extends Controller
 
         return inertia('Book/Index',[
             'books' =>  $books,
-            'success'=>session('success')
+            'success'=>session('success'),
+            'danger'=>session('danger')
 
         ]);
     }

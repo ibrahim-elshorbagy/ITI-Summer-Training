@@ -10,10 +10,15 @@ class Borrowing extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $primaryKey = ['user_id', 'book_id'];
     public $incrementing = false;
 
-    protected $guraded=[];
+    protected $fillable = [
+        'user_id',
+        'book_id',
+        'borrowed_at',
+        'returned_at',
+        'status',
+    ];
 
 
     public function user()

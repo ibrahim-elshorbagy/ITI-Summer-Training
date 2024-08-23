@@ -4,26 +4,17 @@ import { Head, Link, router } from "@inertiajs/react";
 export default function Index({ auth, books, success ,danger}) {
 
 
-    //admin Delete a book
-    const deleteBook = (book) => {
-        if (!window.confirm("Are you sure you want to delete the book?")) {
-            return;
-        }
 
-        router.delete(route("book.destroy", book.id));
-    };
-
-
-    //student borrow a book
+    //student retunr a book
 
         const borrow = (book) => {
-        router.post(route("book.borrow", book.id));
+        router.post(route("book.return", book.id));
     };
 
     // Function to format the date
     const formatDate = (dateString) => {
         const date = new Date(dateString);
-        return date.toLocaleDateString("en-GB"); // This will format the date to DD/MM/YYYY
+        return date.toLocaleDateString("en-GB");
     };
 
     return (
@@ -32,14 +23,9 @@ export default function Index({ auth, books, success ,danger}) {
             header={
                 <div className="flex items-center justify-between">
                     <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-100">
-                        Books
+                        My Books
                     </h2>
-                    <Link
-                        href={route("book.create")}
-                        className="px-3 py-1 text-white transition-all rounded shadow bg-emerald-500 hover:bg-emerald-600"
-                    >
-                        Add new
-                    </Link>
+
                 </div>
             }
         >
@@ -82,29 +68,6 @@ export default function Index({ auth, books, success ,danger}) {
                                                 <td className="px-3 py-2">{book.description}</td>
                                                 <td className="px-3 py-2">{formatDate(book.updated_at)}</td>
 
-                                                {auth.user.roles == 'admin' && (
-                                                    <td className="px-3 py-2">
-                                                        <Link
-                                                            href={route("book.show", book.id)}
-                                                            className="mx-1 font-medium text-emerald-600 hover:underline"
-                                                        >
-                                                            Show
-                                                        </Link>
-                                                        <Link
-                                                            href={route("book.edit", book.id)}
-                                                            className="mx-1 font-medium text-blue-600 hover:underline"
-                                                        >
-                                                            Edit
-                                                        </Link>
-                                                        <button
-                                                            onClick={() => deleteBook(book)}
-                                                            className="mx-1 font-medium text-red-600 hover:underline"
-                                                        >
-                                                            Delete
-                                                        </button>
-                                                    </td>
-                                                )}
-                                                {auth.user.roles == 'student' && (
                                                     <td className="px-3 py-2">
                                                         <Link
                                                             href={route("books.show", book.id)}
@@ -116,10 +79,9 @@ export default function Index({ auth, books, success ,danger}) {
                                                             onClick={() => borrow(book)}
                                                             className="mx-1 font-medium text-blue-600 hover:underline"
                                                         >
-                                                            borrow
+                                                            Retun
                                                         </button>
                                                     </td>
-                                                )}
                                             </tr>
                                         ))}
                                     </tbody>
