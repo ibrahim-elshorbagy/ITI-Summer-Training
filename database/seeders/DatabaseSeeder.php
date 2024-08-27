@@ -37,7 +37,12 @@ class DatabaseSeeder extends Seeder
         ]);
         $user->assignRole('student');
 
-
+        User::factory(20)->create([
+                    'password' => Hash::make('s'),  // Same password for all students
+                    'profile_photo_url' => 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png', // Same default photo
+                ])->each(function ($user) {
+                    $user->assignRole('student');
+                });
 
 
     }

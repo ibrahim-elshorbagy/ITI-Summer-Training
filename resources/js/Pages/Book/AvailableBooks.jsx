@@ -8,6 +8,21 @@ export default function AvailableBooks({ auth, books, success, danger }) {
         return date.toLocaleDateString("en-GB"); // This will format the date to DD/MM/YYYY
     };
 
+    const deleteBook = (book) => {
+    const confirmationMessage = "Are you sure you want to delete the Book?";
+
+    if (!window.confirm(confirmationMessage)) {
+        return;
+    }
+
+    router.delete(route("book.destroy", book), {
+        onSuccess: (page) => {
+        setVisibleSuccess(page.props.success);
+        },
+    });
+};
+
+
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -16,10 +31,18 @@ export default function AvailableBooks({ auth, books, success, danger }) {
                     <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-100">
                         Available Books
                     </h2>
+
+                    {auth.user.roles[0] == "admin" && <Link
+                        href={route("book.create")}
+                        className="px-3 py-1 text-white transition-all rounded shadow bg-emerald-500 hover:bg-emerald-600"
+                    >
+                        Add new
+                    </Link>}
                 </div>
             }
         >
             <div className="py-12">
+                { JSON.stringify() }
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     {success && (
                         <div className="px-4 py-2 mb-4 text-white rounded bg-emerald-500">
@@ -65,6 +88,20 @@ export default function AvailableBooks({ auth, books, success, danger }) {
                                                     >
                                                         Show
                                                     </Link>
+                                                    {auth.user.roles[0] == "admin" && <Link
+                                                        href={route("book.edit", book.id)}
+                                                        className="mx-1 font-medium text-indigo-600 hover:underline"
+                                                    >
+                                                        Edit
+                                                    </Link>
+                                                    }{auth.user.roles[0] == "admin" &&
+                                                    <button
+                                                        onClick={(e) => deleteBook(book.id)}
+                                                        className="mx-1 font-medium text-red-600 dark:text-red-500 hover:underline"
+                                                    >
+                                                        Delete
+                                                    </button>}
+
                                                     {auth.user.roles == 'student' && (
                                                         <button
                                                             onClick={() => router.post(route("book.borrow", book.id))}

@@ -6,6 +6,7 @@ import {
 } from "react-icons/fa";
 import SideNavLink from "@/Components/SideNavLink";
 import { MdOutlineLibraryBooks } from "react-icons/md";
+import { PiStudentBold } from "react-icons/pi";
 
 import { Link } from "@inertiajs/react";
 
@@ -20,6 +21,12 @@ const MySidebar = ({ user }) => {
                     text: "dashboard",
                     href: "admin.dashboard",
                     icon: <MdDashboard />,
+                    roles: ["admin"],
+                },
+                 {
+                    text: "student",
+                    href: "admin.students",
+                    icon: <PiStudentBold />,
                     roles: ["admin"],
                 },
                 {

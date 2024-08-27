@@ -101,7 +101,7 @@ export default function Create({ auth }) {
                             {/* Form Buttons */}
                             <div className="mt-4 text-right">
                                 <Link
-                                    href={route("book.index")}
+                                    href={route("books.available")}
                                     className="px-3 py-1 mr-2 text-gray-800 transition-all bg-gray-100 rounded shadow dark:text-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600"
                                 >
                                     Cancel

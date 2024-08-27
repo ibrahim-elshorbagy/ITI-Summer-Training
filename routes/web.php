@@ -1,16 +1,11 @@
 <?php
 
-use App\Http\Controllers\Doctor\DoctorController;
-use App\Http\Controllers\Doctor\DoctorDashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-
 
 //-------------------------------------------------------------------------------
 //Not login Routes
@@ -37,6 +32,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('/book', BookController::class)->except(['index','show']);                                                     //CRUD opertions
     Route::get('/borrowed-books', [BookController::class, 'borrowedBooks'])->name('books.borrowed');
     Route::get('/available-books', [BookController::class, 'availableBooks'])->name('books.available');
+
+    Route::get('/admin/students', [AdminController::class, 'students'])->name('admin.students');
+    Route::get('/admin/students/{student}', [AdminController::class, 'show'])->name('admin.student.show');
 
 });
 

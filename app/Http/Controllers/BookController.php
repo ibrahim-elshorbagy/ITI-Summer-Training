@@ -62,7 +62,7 @@ class BookController extends Controller
 
         Book::create($data);
 
-        return to_route('book.index')
+        return to_route('books.available')
             ->with('success', "book Created successfully");
 
     }
@@ -111,7 +111,7 @@ class BookController extends Controller
 
         $book->update($data);
 
-        return to_route('book.index')
+        return to_route('books.available')
             ->with('success', "Book updated successfully");
     }
 
@@ -121,7 +121,7 @@ class BookController extends Controller
     {
         $book = Book::find($id);
         $book->delete();
-        return to_route('book.index')->with('success','Book deleted successfully');
+        return to_route('books.available')->with('success','Book deleted successfully');
 
     }
 }
