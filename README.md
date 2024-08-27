@@ -52,3 +52,7 @@
     ```
     php artisan storage:link
     ```
+    And
+    ```
+    php artisan migrate --seed
+    ```
